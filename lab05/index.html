@@ -1,11 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
     <meta charset="utf-8">
-    <title>Lab05</title>
+    <title>Lab5</title>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script> <!-- v6.5.0 -->
-
-	<style type="text/css">
+    <style type="text/css">
         div.bar{
           border: 1px black solid;
           padding :5px;
@@ -13,7 +12,7 @@
           display: inline-block;
           width: 20.5px;
           height: 0px;
-          background-color: lime;
+          background-color: cyan;
         }
         p {
           position:relative;
@@ -24,9 +23,19 @@
           border: 1px red solid;
           padding: 30px;
         }
+
+    </style>
 </head>
 <body>
+  <!--<div class="bar">123</div>
+  <div class="bar">456</div>
+  <div>789</div>-->
+  <!--<text>12</text>-->
     <script type="text/javascript">
+      // Your beautiful D3 code will go here
+      /*d3.selectAll("div")
+        .attr("class","bar")
+        .classed("bar",true);*/
         var w = 1000;
         var h = 200;
         var barPadding = 1;
@@ -37,20 +46,26 @@
                   .attr("width", w)
                   .attr("height", h);
 
-        svg.selectAll("rect")
-        .data(parsedCSV)
-        .enter()
-        .append("rect")
-        .attr("x", function(d, i) {
-        		return i * (w / parsedCSV.length);
-        })
-        .attr("y", function(d) {
-        		return h - (d[1] * 4);
-        })
-        .attr("width", w / parsedCSV.length - barPadding)
-        .attr("height", function(d) {
-        		return d[1] * 4;
-        });
+                  svg.selectAll("rect")
+            			   .data(parsedCSV)
+            			   .enter()
+            			   .append("rect")
+            			   .attr("x", function(d, i) {
+            			   		return i * (w / parsedCSV.length);
+            			   })
+            			   .attr("y", function(d) {
+            			   		return h - (d[1] * 4);
+            			   })
+            			   .attr("width", w / parsedCSV.length - barPadding)
+            			   .attr("height", function(d) {
+            			   		return d[1] * 4;
+            			   })
+            			   .attr("fill", function(d) {
+            					return "rgb(0, 0, " + Math.round(d[1] * 7) + ")";
+            			   });
+
+
+
 
           svg.selectAll("text")
     			   .data(parsedCSV)
@@ -66,5 +81,17 @@
     			   		return h - (d[1] * 4);
     			   })
     			   .attr("font-family", "sans-serif")
-    			   .attr("font-size", "10px")
+    			   .attr("font-size", "11px")
       });
+      /*d3.csv("data1.csv",function(data){
+        var d3.text();
+        d3.select("body")
+          .selectAll("div")
+          .data(data)
+          .enter()
+          .append("div")
+          .attr("class","bar")
+          .style("height","bar")
+      });*/
+    </script>
+  </html>
